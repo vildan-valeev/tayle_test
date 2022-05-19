@@ -34,6 +34,14 @@ Requirements for dev:
 3. [docker-compose](https://docs.docker.com/compose/install/)
 4. [python 3.8+](https://www.python.org/downloads/release/python-380/)
 ---
+
+Возможно будет небольшая путаница в названиях... 
+Ассount в приложении account - это кастоманая реализация юзера
+Account в приложении balance - это счета по которым идут транзакции.
+
+---
+
+
 # Запуск
 
 ### Помощь

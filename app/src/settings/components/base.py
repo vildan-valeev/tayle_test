@@ -24,7 +24,7 @@ DJANGO_APPS: Tuple[str, ...] = (
 PROJECT_APPS: Tuple[str, ...] = (
     'apps.account.apps.AccountConfig',
     'apps.core.apps.CoreConfig',
-
+    'apps.balance.apps.BalanceConfig',
 )
 
 THIRD_PARTY_APPS: Tuple[str, ...] = (

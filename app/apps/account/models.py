@@ -23,4 +23,4 @@ class Account(AbstractUser):
         return self.email
 
     def __str__(self):
-        return self.email
+        return self.username
