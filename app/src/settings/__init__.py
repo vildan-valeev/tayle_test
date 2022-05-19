@@ -13,9 +13,9 @@ _ENV = environ['DJANGO_ENV']
 print(_ENV, "ENV")
 _base_settings = (
     'components/base.py',
-    'components/swagger.py',
-    'components/logging.py',
-    'components/rest_settings.py',
+    # 'components/swagger.py',
+    # 'components/logging.py',
+    # 'components/rest_settings.py',
 
     # Select the right env:
     f'environments/{_ENV}.py',
