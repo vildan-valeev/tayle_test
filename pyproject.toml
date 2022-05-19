@@ -7,6 +7,11 @@ authors = ["vildan-valeev <vildan.maydanovich.valeev@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^4.0.4"
+django-split-settings = "^1.1.0"
+python-decouple = "^3.6"
+django-cors-headers = "^3.12.0"
+django-bootstrap-v5 = "^1.0.11"
+django-stubs-ext = "^0.4.0"
 
 [tool.poetry.dev-dependencies]
 
