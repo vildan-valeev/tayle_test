@@ -22,8 +22,6 @@ DJANGO_APPS: Tuple[str, ...] = (
 )
 
 PROJECT_APPS: Tuple[str, ...] = (
-    'apps.trade.apps.TradeConfig',
-    'apps.faq.apps.FaqConfig',
     'apps.account.apps.AccountConfig',
     'apps.core.apps.CoreConfig',
 
@@ -31,12 +29,7 @@ PROJECT_APPS: Tuple[str, ...] = (
 
 THIRD_PARTY_APPS: Tuple[str, ...] = (
     'corsheaders',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'drf_yasg',
     'bootstrap5',
-
-    # 'channels',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
