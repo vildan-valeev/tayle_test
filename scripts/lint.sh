@@ -3,5 +3,5 @@
 set -e
 set -x
 
-poetry run flake8 app
+poetry run flake8
 

@@ -1,7 +1,7 @@
 from os import environ
 
 import django_stubs_ext
-from split_settings.tools import include, optional
+from split_settings.tools import include
 
 # Monkeypatching Django, so stubs will work for all generics,
 # see: https://github.com/typeddjango/django-stubs

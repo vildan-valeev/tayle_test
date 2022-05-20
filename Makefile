@@ -9,10 +9,10 @@ develop:
 	docker-compose up --build
 
 lint:
-	sh scripts/lint_bot.sh
+	sh scripts/lint.sh
 
 test:
-	sh scripts/test_bot.sh
+	sh scripts/test.sh
 
 deploy:
 	sh scripts/deploy.sh

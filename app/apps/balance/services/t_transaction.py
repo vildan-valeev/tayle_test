@@ -1,7 +1,6 @@
 """
 Тестовая проверка алгоритма (на работу django не влияет...)
 """
-from typing import List
 
 import unittest
 

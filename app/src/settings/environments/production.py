@@ -9,5 +9,3 @@ ALLOWED_HOSTS = [
     # We need this value for `healthcheck` to work:
     'localhost',
 ]
-
-

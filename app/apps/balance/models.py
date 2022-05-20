@@ -49,7 +49,8 @@ class AccountBillTransaction(models.Model):
     amount = models.DecimalField(max_digits=20, decimal_places=6)
 
     def __str__(self):
-        return f"Transaction: {self.from_bills.first().user.username}  --> {self.to_bill.user.username}. Amount {self.amount}"
+        return f"Transaction: {self.from_bills.first().user.username}  --> {self.to_bill.user.username}. " \
+               f"Amount {self.amount}"
 
     class Meta:
         verbose_name = "Транзакцию между пользователем"
@@ -76,8 +77,6 @@ class BillTransaction(models.Model):
                 now = datetime.datetime.utcnow()
                 super(BillTransaction, self).save(force_insert=False, force_update=False, using=None,
                                                   update_fields=None)
-                account_from_balance_before = bill_from.balance
-                account_to_balance_before = bill_to.balance
 
                 bill_from.balance += -self.amount
                 bill_from.modified_at = now
@@ -90,12 +89,12 @@ class BillTransaction(models.Model):
                 account_from_balance_after = bill_from.balance
                 account_to_balance_after = bill_to.balance
 
-                entry_from = BillEntry.objects.create(transaction=self, bill=bill_from,
-                                                      amount=-self.amount, created_at=now,
-                                                      balance_after_transaction=account_from_balance_after)
-                entry_to = BillEntry.objects.create(transaction=self, bill=bill_to,
-                                                    amount=self.amount, created_at=now,
-                                                    balance_after_transaction=account_to_balance_after)
+                BillEntry.objects.create(transaction=self, bill=bill_from,
+                                         amount=-self.amount, created_at=now,
+                                         balance_after_transaction=account_from_balance_after)
+                BillEntry.objects.create(transaction=self, bill=bill_to,
+                                         amount=self.amount, created_at=now,
+                                         balance_after_transaction=account_to_balance_after)
                 return self
 
     def __str__(self):

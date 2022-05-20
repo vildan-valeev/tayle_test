@@ -2,9 +2,9 @@ from decouple import Csv
 
 from src.settings.components import config
 from src.settings.components.base import (
-    INSTALLED_APPS,
-    MIDDLEWARE
+    INSTALLED_APPS
 )
+
 print('DEVELOPMENT ENV!!!!')
 DEBUG = True
 
@@ -30,6 +30,7 @@ INSTALLED_APPS += (
     # # django-extra-checks:
     # 'extra_checks',
 )
+
 
 # MIDDLEWARE += (
 #     'debug_toolbar.middleware.DebugToolbarMiddleware',

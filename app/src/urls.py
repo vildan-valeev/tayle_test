@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf import settings
 from apps.core.views import main_page
 
 urlpatterns = [
@@ -23,3 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.account.urls')),
 ]
+
+
+admin.site.site_header = settings.PROJECT_NAME
+admin.site.site_title = settings.PROJECT_NAME
+admin.site.index_title = f"Добро пожаловать в {settings.PROJECT_NAME}"
