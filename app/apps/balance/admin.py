@@ -1,6 +1,7 @@
-from django.contrib import admin
+from django.contrib import admin, messages
 
 from apps.balance.models import BillEntry, Bill, BillTransaction, AccountBillTransaction
+from apps.balance.services.service import transaction_many_to_one
 
 
 class BillEntryAdmin(admin.TabularInline):
@@ -58,6 +59,13 @@ class AccountBillTransactionAdmin(admin.ModelAdmin):
         if db_field.name == "to_bill":
             kwargs["queryset"] = Bill.objects.exclude(user=request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    def save_related(self, request, form, formsets, change):
+        super(AccountBillTransactionAdmin, self).save_related(request, form, formsets, change)
+        result, message_text = transaction_many_to_one(form.instance)
+        if result:
+            return messages.add_message(request, messages.INFO, message_text)
+        messages.add_message(request, messages.WARNING, message_text)
 
     def has_change_permission(self, request, obj=None):
         return False
