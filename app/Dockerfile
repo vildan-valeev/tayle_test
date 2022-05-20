@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 
 #  установка бибилиотек
-COPY ../pyproject.toml ./poetry.lock ./app/start.sh /
+COPY ./pyproject.toml ./poetry.lock ./app/start.sh /
 
 RUN pip3 install poetry
 

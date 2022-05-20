@@ -51,5 +51,17 @@ $ make help
 Вводить дополнительно ничего не нужно, фикстуры и пользователи создаются автоматически.
 
 ---
+# Database dump/load
+```shell
+$ docker exec -it app sh -c "poetry run python manage.py dumpdata --natural-foreign --natural-primary --exclude=contenttypes --exclude=auth.Permission --exclude=admin.logentry --exclude=sessions.session --indent 4 > default_data.json"
+docker exec -it app poetry run python manage.py loaddata default_data.json
+```
+## Enter to container
+```sh
+$ docker exec -it <id container or name> bash
+$ docker exec -it <id container or name> poetry run <command>
+```
+---
 ## TODO:
-1. 
+1. Убрать линтеры из poetry во время сборки
+2. 

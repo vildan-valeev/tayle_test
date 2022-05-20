@@ -8,7 +8,7 @@ services:
       dockerfile: app/Dockerfile
     command: sh -c "poetry run python manage.py migrate --no-input && poetry run python manage.py runserver 0.0.0.0:8000"
     env_file:
-      - .env
+      - .env.dev
     ports:
       - "8000:8000"
     volumes:
