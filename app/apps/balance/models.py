@@ -49,7 +49,7 @@ class AccountBillTransaction(models.Model):
     amount = models.DecimalField(max_digits=20, decimal_places=6)
 
     def __str__(self):
-        return f"Transaction:  --> {self.to_bill.user.username}. Amount {self.amount}"
+        return f"Transaction: {self.from_bills.first().user.username}  --> {self.to_bill.user.username}. Amount {self.amount}"
 
     class Meta:
         verbose_name = "Транзакцию между пользователем"
