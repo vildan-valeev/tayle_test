@@ -1,0 +1,707 @@
+local ENV
+LOCAL SETTINGS!!!!
+[
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "account.account",
+    "fields": {
+        "password": "pbkdf2_sha256$320000$y9H0aZP0sRuEM6gAX6KW89$m4Wu1i8Ie4spONxb46F0JeVTFsYywG9oRKoO3kUSXrc=",
+        "last_login": "2022-05-19T22:17:59.970Z",
+        "is_superuser": true,
+        "username": "admin",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2022-05-19T22:17:49.559Z",
+        "first_name": null,
+        "last_name": null,
+        "company": null,
+        "phone": null,
+        "country": null,
+        "job": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.account",
+    "fields": {
+        "password": "25658545",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user1",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-05-19T22:19:22Z",
+        "first_name": null,
+        "last_name": null,
+        "company": null,
+        "phone": null,
+        "country": null,
+        "job": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "account.account",
+    "fields": {
+        "password": "25658545",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "user2",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2022-05-19T22:20:08Z",
+        "first_name": null,
+        "last_name": null,
+        "company": null,
+        "phone": null,
+        "country": null,
+        "job": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 1,
+    "fields": {
+        "modified_at": "2022-05-20T08:16:52.899Z",
+        "created_at": "2022-05-19T22:19:53.521Z",
+        "user": [
+            "admin"
+        ],
+        "balance": "369.000000"
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 2,
+    "fields": {
+        "modified_at": "2022-05-20T08:15:14.668Z",
+        "created_at": "2022-05-19T22:20:02.853Z",
+        "user": [
+            "user1"
+        ],
+        "balance": "621.000000"
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 3,
+    "fields": {
+        "modified_at": "2022-05-20T08:16:52.919Z",
+        "created_at": "2022-05-19T22:20:31.557Z",
+        "user": [
+            "user2"
+        ],
+        "balance": "530.000000"
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 4,
+    "fields": {
+        "modified_at": "2022-05-20T08:16:52.909Z",
+        "created_at": "2022-05-19T22:20:45.203Z",
+        "user": [
+            "admin"
+        ],
+        "balance": "90.000000"
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 5,
+    "fields": {
+        "modified_at": "2022-05-20T08:16:52.919Z",
+        "created_at": "2022-05-19T22:20:53.147Z",
+        "user": [
+            "admin"
+        ],
+        "balance": "490.000000"
+    }
+},
+{
+    "model": "balance.bill",
+    "pk": 6,
+    "fields": {
+        "modified_at": "2022-05-19T22:21:00.517Z",
+        "created_at": "2022-05-19T22:21:00.517Z",
+        "user": [
+            "user1"
+        ],
+        "balance": "1000.000000"
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-05-19T22:28:56.439Z",
+        "to_bill": 3,
+        "comment": "11",
+        "reason": "BILLED",
+        "amount": "11.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-05-19T22:30:27.429Z",
+        "to_bill": 2,
+        "comment": "21",
+        "reason": "DEPOSITED",
+        "amount": "21.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-05-19T22:31:06.282Z",
+        "to_bill": 2,
+        "comment": "21",
+        "reason": "BILLED",
+        "amount": "21.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-05-19T22:37:16.879Z",
+        "to_bill": 2,
+        "comment": "23",
+        "reason": "BILLED",
+        "amount": "23.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-05-19T22:49:47.962Z",
+        "to_bill": 2,
+        "comment": "2",
+        "reason": "BILLED",
+        "amount": "22.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 6,
+    "fields": {
+        "created_at": "2022-05-19T22:51:43.233Z",
+        "to_bill": 2,
+        "comment": "212",
+        "reason": "BILLED",
+        "amount": "123.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 7,
+    "fields": {
+        "created_at": "2022-05-19T22:58:26.908Z",
+        "to_bill": 2,
+        "comment": "12",
+        "reason": "DEPOSITED",
+        "amount": "123.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 8,
+    "fields": {
+        "created_at": "2022-05-19T23:01:33.831Z",
+        "to_bill": 2,
+        "comment": "12",
+        "reason": "BILLED",
+        "amount": "12.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 9,
+    "fields": {
+        "created_at": "2022-05-19T23:06:00.764Z",
+        "to_bill": 2,
+        "comment": "2",
+        "reason": "BILLED",
+        "amount": "2.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 10,
+    "fields": {
+        "created_at": "2022-05-19T23:06:53.599Z",
+        "to_bill": 3,
+        "comment": "23",
+        "reason": "DEPOSITED",
+        "amount": "23.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 11,
+    "fields": {
+        "created_at": "2022-05-19T23:08:04.491Z",
+        "to_bill": 2,
+        "comment": "12",
+        "reason": "DEPOSITED",
+        "amount": "12.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 12,
+    "fields": {
+        "created_at": "2022-05-19T23:16:53.388Z",
+        "to_bill": 2,
+        "comment": "12",
+        "reason": "REFUNDED",
+        "amount": "12.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 13,
+    "fields": {
+        "created_at": "2022-05-19T23:17:07.066Z",
+        "to_bill": 2,
+        "comment": "2",
+        "reason": "DEPOSITED",
+        "amount": "2.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 14,
+    "fields": {
+        "created_at": "2022-05-19T23:17:40.185Z",
+        "to_bill": 3,
+        "comment": "12",
+        "reason": "DEPOSITED",
+        "amount": "12.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 15,
+    "fields": {
+        "created_at": "2022-05-19T23:21:47.184Z",
+        "to_bill": 3,
+        "comment": "22",
+        "reason": "DEPOSITED",
+        "amount": "32.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 16,
+    "fields": {
+        "created_at": "2022-05-19T23:23:50.386Z",
+        "to_bill": 2,
+        "comment": "3",
+        "reason": "BILLED",
+        "amount": "33.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 17,
+    "fields": {
+        "created_at": "2022-05-19T23:25:54.991Z",
+        "to_bill": 2,
+        "comment": "12",
+        "reason": "BILLED",
+        "amount": "12.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 18,
+    "fields": {
+        "created_at": "2022-05-19T23:27:22.267Z",
+        "to_bill": 2,
+        "comment": "3232",
+        "reason": "BILLED",
+        "amount": "3232.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 19,
+    "fields": {
+        "created_at": "2022-05-20T06:43:35.175Z",
+        "to_bill": 2,
+        "comment": "2323",
+        "reason": "BILLED",
+        "amount": "23.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 20,
+    "fields": {
+        "created_at": "2022-05-20T06:44:29.833Z",
+        "to_bill": 3,
+        "comment": "23",
+        "reason": "BILLED",
+        "amount": "23.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 21,
+    "fields": {
+        "created_at": "2022-05-20T06:52:39.603Z",
+        "to_bill": 2,
+        "comment": "33",
+        "reason": "BILLED",
+        "amount": "33.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 22,
+    "fields": {
+        "created_at": "2022-05-20T06:53:56.460Z",
+        "to_bill": 2,
+        "comment": "22",
+        "reason": "BILLED",
+        "amount": "22.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 23,
+    "fields": {
+        "created_at": "2022-05-20T07:03:16.064Z",
+        "to_bill": 2,
+        "comment": "32",
+        "reason": "BILLED",
+        "amount": "32.000000",
+        "from_bills": [
+            1,
+            4
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 24,
+    "fields": {
+        "created_at": "2022-05-20T08:15:14.656Z",
+        "to_bill": 2,
+        "comment": "111",
+        "reason": "BILLED",
+        "amount": "111.000000",
+        "from_bills": [
+            1
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 25,
+    "fields": {
+        "created_at": "2022-05-20T08:16:15.630Z",
+        "to_bill": 3,
+        "comment": "333",
+        "reason": "BILLED",
+        "amount": "333.000000",
+        "from_bills": [
+            1,
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "balance.accountbilltransaction",
+    "pk": 26,
+    "fields": {
+        "created_at": "2022-05-20T08:16:52.886Z",
+        "to_bill": 3,
+        "comment": "30",
+        "reason": "BILLED",
+        "amount": "30.000000",
+        "from_bills": [
+            1,
+            4,
+            5
+        ]
+    }
+},
+{
+    "model": "balance.billtransaction",
+    "pk": 1,
+    "fields": {
+        "created_at": "2022-05-19T22:25:00.220Z",
+        "from_bill": 1,
+        "to_bill": 2,
+        "comment": "10",
+        "reason": "BILLED",
+        "amount": "10.000000"
+    }
+},
+{
+    "model": "balance.billtransaction",
+    "pk": 2,
+    "fields": {
+        "created_at": "2022-05-20T08:15:14.668Z",
+        "from_bill": 1,
+        "to_bill": 2,
+        "comment": "111",
+        "reason": "BILLED",
+        "amount": "111.000000"
+    }
+},
+{
+    "model": "balance.billtransaction",
+    "pk": 3,
+    "fields": {
+        "created_at": "2022-05-20T08:16:52.900Z",
+        "from_bill": 1,
+        "to_bill": 3,
+        "comment": "30",
+        "reason": "BILLED",
+        "amount": "10.000000"
+    }
+},
+{
+    "model": "balance.billtransaction",
+    "pk": 4,
+    "fields": {
+        "created_at": "2022-05-20T08:16:52.910Z",
+        "from_bill": 4,
+        "to_bill": 3,
+        "comment": "30",
+        "reason": "BILLED",
+        "amount": "10.000000"
+    }
+},
+{
+    "model": "balance.billtransaction",
+    "pk": 5,
+    "fields": {
+        "created_at": "2022-05-20T08:16:52.919Z",
+        "from_bill": 5,
+        "to_bill": 3,
+        "comment": "30",
+        "reason": "BILLED",
+        "amount": "10.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 1,
+    "fields": {
+        "bill": 1,
+        "transaction": 1,
+        "created_at": "2022-05-19T22:25:00.219Z",
+        "amount": "-10.000000",
+        "balance_after_transaction": "490.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 2,
+    "fields": {
+        "bill": 2,
+        "transaction": 1,
+        "created_at": "2022-05-19T22:25:00.219Z",
+        "amount": "10.000000",
+        "balance_after_transaction": "510.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 3,
+    "fields": {
+        "bill": 1,
+        "transaction": 2,
+        "created_at": "2022-05-20T08:15:14.668Z",
+        "amount": "-111.000000",
+        "balance_after_transaction": "379.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 4,
+    "fields": {
+        "bill": 2,
+        "transaction": 2,
+        "created_at": "2022-05-20T08:15:14.668Z",
+        "amount": "111.000000",
+        "balance_after_transaction": "621.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 5,
+    "fields": {
+        "bill": 1,
+        "transaction": 3,
+        "created_at": "2022-05-20T08:16:52.899Z",
+        "amount": "-10.000000",
+        "balance_after_transaction": "369.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 6,
+    "fields": {
+        "bill": 3,
+        "transaction": 3,
+        "created_at": "2022-05-20T08:16:52.899Z",
+        "amount": "10.000000",
+        "balance_after_transaction": "510.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 7,
+    "fields": {
+        "bill": 4,
+        "transaction": 4,
+        "created_at": "2022-05-20T08:16:52.909Z",
+        "amount": "-10.000000",
+        "balance_after_transaction": "90.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 8,
+    "fields": {
+        "bill": 3,
+        "transaction": 4,
+        "created_at": "2022-05-20T08:16:52.909Z",
+        "amount": "10.000000",
+        "balance_after_transaction": "520.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 9,
+    "fields": {
+        "bill": 5,
+        "transaction": 5,
+        "created_at": "2022-05-20T08:16:52.919Z",
+        "amount": "-10.000000",
+        "balance_after_transaction": "490.000000"
+    }
+},
+{
+    "model": "balance.billentry",
+    "pk": 10,
+    "fields": {
+        "bill": 3,
+        "transaction": 5,
+        "created_at": "2022-05-20T08:16:52.919Z",
+        "amount": "10.000000",
+        "balance_after_transaction": "530.000000"
+    }
+}
+]

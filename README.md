@@ -48,7 +48,14 @@ Account в приложении balance - это счета по которым 
 ```makefile
 $ make help
 ```
-Вводить дополнительно ничего не нужно, фикстуры и пользователи создаются автоматически.
+```makefile
+$ make develop
+```
+Создание пользователя из фикстур.
+```shell
+docker exec -it app poetry run python manage.py loaddata default_data.json
+```
+
 
 ---
 # Database dump/load
