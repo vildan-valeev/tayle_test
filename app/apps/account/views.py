@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import DetailView
+from django.views import View
+from django.views.generic import DetailView, TemplateView
 
 from .models import Account
 
@@ -21,3 +22,7 @@ class AccountDetail(LoginRequiredMixin, DetailView):
         bills = Bill.objects.filter(user=self.get_object())
         context['bills'] = bills.values()
         return context
+
+
+class AccountTransactionView(LoginRequiredMixin, TemplateView):
+    template_name = 'account/account_transaction.html'
