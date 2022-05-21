@@ -4,6 +4,7 @@ from apps.balance.models import AccountBillTransaction, BillTransaction
 
 
 def transaction_many_to_one(instance: AccountBillTransaction):
+    """Бизнес-логика транзакции при выборе нескольких счетов"""
     bills = instance.from_bills.all()
     # минимальный счет определяем, для равномерного снятия
     min_bill = bills.aggregate(Min('balance'))

@@ -98,7 +98,9 @@ class BillTransactionAdmin(admin.ModelAdmin):
         return False
 
     def has_add_permission(self, request, obj=None):
+        """BillTransaction только для просмотра. Все транзакции проходят через AccountBillTransaction"""
         return False
+
 
 admin.site.register(Bill, BillAdmin)
 admin.site.register(BillTransaction, BillTransactionAdmin)
