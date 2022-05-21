@@ -40,10 +40,10 @@ class BillAdmin(admin.ModelAdmin):
 
 
 class AccountBillTransactionAdmin(admin.ModelAdmin):
-    list_display = ('id', "to_bill", "amount", "reason",
+    list_display = ('id', 'to_bill', 'amount', 'reason',
                     'created_at')
-    list_display_links = ('id', "amount")
-    readonly_fields = ('created_at',)
+    list_display_links = ('id', 'amount')
+    readonly_fields = ('created_at', 'reason')
     # raw_id_fields = ('from_account', 'to_account')
     list_filter = (
         'created_at',

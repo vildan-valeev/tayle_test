@@ -28,6 +28,7 @@ class Bill(models.Model):
 
 REASON_DEPOSITED = 'DEPOSITED'
 REASON_PURCHASE = 'BILLED'
+REASON_DEPOSITED = 'CANCELED'
 REASON_PURCHASE_REFUND = 'REFUNDED'
 REASON_OTHER = 'OTHER'
 REASON_CHOICES = (
@@ -45,17 +46,21 @@ class AccountBillTransaction(models.Model):
     to_bill = models.ForeignKey(Bill, models.PROTECT, related_name="to_bill")
     created_at = models.DateTimeField(auto_now_add=True, auto_created=True)
     comment = models.TextField()
-    reason = models.CharField(max_length=255, blank=True, null=True, choices=REASON_CHOICES)
+    reason = models.CharField(max_length=255, null=False, choices=REASON_CHOICES, default=REASON_DEPOSITED)
     amount = models.DecimalField(max_digits=20, decimal_places=6)
 
     def __str__(self):
-        return f"Transaction: {self.from_bills.first().user.username}  --> {self.to_bill.user.username}. " \
+        return f"Transaction: ID {self.id} to --> {self.to_bill.user.username}. " \
                f"Amount {self.amount}"
 
     class Meta:
         verbose_name = "Транзакцию между пользователем"
         verbose_name_plural = "Транзакции между пользователями"
 
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+
+        super(AccountBillTransaction, self).save(force_insert=False, force_update=False, using=None,
+                                          update_fields=None)
 
 class BillTransaction(models.Model):
     """Транзакция между счетами пользователя"""
