@@ -178,7 +178,7 @@
               {% if user.is_authenticated %}
                     <li class="dropdown-header">
                       <h6>{{ user.get_first_name }} {{ user.get_last_name }}</h6>
-                      <span>Web Designer</span>
+                      <span>{{ user.job }}</span>
                     </li>
                     <li>
                       <hr class="dropdown-divider">

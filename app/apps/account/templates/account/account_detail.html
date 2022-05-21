@@ -25,8 +25,8 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="{% static 'assets/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-              <h2>Kevin Anderson</h2>
-              <h3>Web Designer</h3>
+              <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+              <h3>{{ user.job }}</h3>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -60,8 +60,8 @@
                   <h5 class="card-title">Profile Details</h5>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">{{ user.first_name }} {{ user.last_name }}</div>
+                    <div class="col-lg-3 col-md-4 label ">Username</div>
+                    <div class="col-lg-9 col-md-8">{{ user.username }}</div>
                   </div>
 
                   <div class="row">
