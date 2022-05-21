@@ -1,7 +1,7 @@
 from django.contrib import admin, messages
 
 from apps.balance.models import BillEntry, Bill, BillTransaction, AccountBillTransaction
-from apps.balance.services.service import transaction_many_to_one
+from apps.balance.services.service import TransactionLogic
 
 
 class BillEntryAdmin(admin.TabularInline):
@@ -72,10 +72,19 @@ class AccountBillTransactionAdmin(admin.ModelAdmin):
     def save_related(self, request, form, formsets, change):
         """Разделение перевода по счетам и оповещение сообщением об операции"""
         super(AccountBillTransactionAdmin, self).save_related(request, form, formsets, change)
-        result, message_text = transaction_many_to_one(form.instance)
-        if result:
-            return messages.add_message(request, messages.INFO, message_text)
-        messages.add_message(request, messages.WARNING, message_text)
+
+        # TODO: перетащить всю логику в класс TransactionLogic, если будет одинаковый код и в других местах
+        trans_process = TransactionLogic(form.instance)
+        can_transaction, msg = trans_process.can_do_transaction()
+        if can_transaction:
+            # проводим транзакцию
+            result, msg = trans_process.do_transaction()
+            # меняем статус
+            trans_process.billed_transaction()
+            return messages.add_message(request, messages.INFO, msg)
+        # отмена транзакции
+        trans_process.cancel_transaction()
+        messages.add_message(request, messages.WARNING, msg)
 
     def has_change_permission(self, request, obj=None):
         return False
