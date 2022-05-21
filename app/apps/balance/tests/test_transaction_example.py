@@ -2,10 +2,10 @@
 Тестовая проверка алгоритма перевода денег со счетов (на работу django не влияет...)
 """
 
-import unittest
+from django.test import TestCase
 
 
-def test_transaction(need: int, bills: list) -> list:
+def transaction_example(need: int, bills: list) -> list:
     """Имитация снятия денег со счетов"""
     # счет с минимальным остатком
     m_bill = min(bills)
@@ -17,7 +17,7 @@ def test_transaction(need: int, bills: list) -> list:
     return bills
 
 
-class TestTransaction(unittest.TestCase):
+class TestTransaction(TestCase):
 
     def test_t_1(self):
         """Недостаточно"""
@@ -28,27 +28,25 @@ class TestTransaction(unittest.TestCase):
         # Максимальный счет списания здесь 300р
         bills = [100, 200, 200]
         after_transaction = [100, 200, 200]
-        self.assertEqual(test_transaction(need, bills), after_transaction, 'example #1')
+        self.assertEqual(transaction_example(need, bills), after_transaction, 'example #1')
 
     def test_t_2(self):
         """Достаточно"""
         need = 300
         bills = [100, 100, 100]
         after_transaction = [0, 0, 0]
-        self.assertEqual(test_transaction(need, bills), after_transaction, 'example #2')
+        self.assertEqual(transaction_example(need, bills), after_transaction, 'example #2')
 
     def test_t_3(self):
         """Недостаточно"""
         need = 300
         bills = [0, 0, 400]
         after_transaction = [0, 0, 400]
-        self.assertEqual(test_transaction(need, bills), after_transaction, 'example #3')
+        self.assertEqual(transaction_example(need, bills), after_transaction, 'example #3')
 
     def test_t_4(self):
         """Достаточно средств"""
         need = 600
         bills = [300, 400, 500]
         after_transaction = [100, 200, 300]
-        self.assertEqual(test_transaction(need, bills), after_transaction, 'example #4')
-
-# python -m unittest -v max_in_data.py
+        self.assertEqual(transaction_example(need, bills), after_transaction, 'example #4')
