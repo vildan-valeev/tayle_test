@@ -59,9 +59,9 @@ class AccountBillTransaction(models.Model):
         verbose_name_plural = "Транзакции между пользователями"
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-
         super(AccountBillTransaction, self).save(force_insert=False, force_update=False, using=None,
-                                          update_fields=None)
+                                                 update_fields=None)
+
 
 class BillTransaction(models.Model):
     """Транзакция между счетами пользователя"""

@@ -1,7 +1,5 @@
 import decimal
-
 from django.test import TestCase
-from django.urls import reverse
 
 from apps.account.models import Account
 from apps.balance.models import Bill, AccountBillTransaction, REASON_PURCHASE
@@ -18,7 +16,7 @@ class AccountTransactionTest(TestCase):
 
     def test_ok(self):
         """Недостаточно средств на одном из счетов для перевода если выбраны несколько"""
-        #Добавляем счета и балансы
+        # Добавляем счета и балансы
         admin_bill_1 = Bill.objects.create(user=self.admin, balance=100)
         admin_bill_2 = Bill.objects.create(user=self.admin, balance=100)
         admin_bill_3 = Bill.objects.create(user=self.admin, balance=100)

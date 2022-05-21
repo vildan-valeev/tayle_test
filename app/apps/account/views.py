@@ -1,10 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views import View
 from django.views.generic import DetailView, TemplateView
 
 from .models import Account
-
-# Create your views here.
 from ..balance.models import Bill
 
 

@@ -1,8 +1,5 @@
 from django.test import TestCase
-from django.urls import reverse
-
 from apps.account.models import Account
-from apps.balance.models import Bill
 
 
 class AccountModelTest(TestCase):
