@@ -41,10 +41,11 @@ Requirements for dev:
 ```makefile
 $ make help
 ```
+Запуск
 ```makefile
 $ make develop
 ```
-Создание пользователя из фикстур.
+Создание пользователя из фикстур(необязательно, если есть db.sqlite3).
 ```shell
 docker exec -it app poetry run python manage.py loaddata default_data.json
 ```
