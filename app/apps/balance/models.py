@@ -41,7 +41,7 @@ REASON_CHOICES = (
 class AccountBillTransaction(models.Model):
     """Транзакция между пользователями - из нескольких счетов в одну"""
 
-    from_bills = models.ManyToManyField(Bill)
+    from_bills = models.ManyToManyField(Bill, blank=False)
     to_bill = models.ForeignKey(Bill, models.PROTECT, related_name="to_bill")
     created_at = models.DateTimeField(auto_now_add=True, auto_created=True)
     comment = models.TextField()
