@@ -16,7 +16,6 @@ def transaction_many_to_one(instance: AccountBillTransaction):
     min_bill = bills.aggregate(Min('balance'))
     # минимально равные доли которые можно снимать
     min_need = instance.amount / len(bills)
-    print(min_need, min_bill.get("balance__min"))
     # если остаток на самом минимальном счете превышает min_need(сумма разделенная на количество счетов),
     # то значит средств на всех счетах достаточно для снятия суммы. Пример в test_transaction_example.py
     if min_bill.get("balance__min") >= min_need:
