@@ -1,6 +1,6 @@
 from django.db.models import Min
 
-from apps.balance.models import AccountBillTransaction, BillTransaction
+from apps.balance.models import AccountBillTransaction, BillTransaction, REASON_CANCELED, REASON_PURCHASE
 
 """
 Не используется явно принцип "жирные модели" и "жирные вьюхи". 
@@ -9,23 +9,38 @@ from apps.balance.models import AccountBillTransaction, BillTransaction
 """
 
 
-def transaction_many_to_one(instance: AccountBillTransaction):
-    """Бизнес-логика транзакции при выборе нескольких счетов"""
-    bills = instance.from_bills.all()
-    # минимальный счет определяем, для равномерного снятия
-    min_bill = bills.aggregate(Min('balance'))
-    # минимально равные доли которые можно снимать
-    min_need = instance.amount / len(bills)
-    # если остаток на самом минимальном счете превышает min_need(сумма разделенная на количество счетов),
-    # то значит средств на всех счетах достаточно для снятия суммы. Пример в test_transaction_example.py
-    if min_bill.get("balance__min") >= min_need:
-        for bill in bills:
+class TransactionLogic:
+    def __init__(self, instance: AccountBillTransaction):
+        self.instance = instance
+        self.bills = instance.from_bills.all()  # счета отправителя
+        print(self.bills)
+        self.min_bill = self.bills.aggregate(Min('balance'))  # минимальный счет определяем, для равномерного снятия
+        self.min_need = self.instance.amount / len(self.bills)  # минимально равные доли которые можно снимать
+
+    def can_do_transaction(self):
+        """Проверка на возможность отправки"""
+        if self.min_bill.get("balance__min") >= self.min_need:
+            return True, ""
+        return False, "Transactions create error (Недостаточно средств)"
+
+    def do_transaction(self):
+        """Отправка средств между счетами - One to one"""
+        for bill in self.bills:
             BillTransaction.objects.create(
                 from_bill=bill,
-                to_bill=instance.to_bill,
-                comment=instance.comment,
-                reason=instance.reason,
-                amount=min_need,
+                to_bill=self.instance.to_bill,
+                comment=self.instance.comment,
+                reason=REASON_PURCHASE,  # TODO: продумать логику на случай если отвалится сохранение
+                amount=self.min_need,
             )
-        return True, 'Bills created'
-    return False, "Bills create error (Недостаточно средств)"
+        return True, 'Transactions completed'
+
+    def cancel_transaction(self):
+        """Ставим статус отмена транзакции в REASON_CANCELED модели, деньги не переводим"""
+        self.instance.reason = REASON_CANCELED
+        self.instance.save()
+
+    def billed_transaction(self):
+        """Ставим статус ПОЛОЖИТЕЛЬНЫЙ в REASON_CANCELED модели, деньг переведены"""
+        self.instance.reason = REASON_PURCHASE
+        self.instance.save()
