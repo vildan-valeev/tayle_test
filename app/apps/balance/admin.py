@@ -51,16 +51,26 @@ class AccountBillTransactionAdmin(admin.ModelAdmin):
     filter_horizontal = ("from_bills",)
 
     def formfield_for_manytomany(self, db_field, request, **kwargs):
+        """
+        Фильтр вывода счетов для показа
+
+        Для счетов from_bill - показываем только свои счета
+        """
         if db_field.name == "from_bills":
             kwargs["queryset"] = Bill.objects.filter(user=request.user)
         return super().formfield_for_manytomany(db_field, request, **kwargs)
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """
+        Фильтр вывода счетов для показа
+        Для счетов to_bill - не показываем свои счета.
+        """
         if db_field.name == "to_bill":
             kwargs["queryset"] = Bill.objects.exclude(user=request.user)
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
     def save_related(self, request, form, formsets, change):
+        """Разделение перевода по счетам и оповещение сообщением об операции"""
         super(AccountBillTransactionAdmin, self).save_related(request, form, formsets, change)
         result, message_text = transaction_many_to_one(form.instance)
         if result:
@@ -85,6 +95,12 @@ class BillTransactionAdmin(admin.ModelAdmin):
     )
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """
+        Фильтр вывода счетов для показа
+        Для счетов to_bill - не показываем свои счета.
+        Для счетов from_bill - показываем только свои счета
+        """
+
         if db_field.name == "to_bill":
             kwargs["queryset"] = Bill.objects.exclude(user=request.user)
         if db_field.name == "from_bill":
