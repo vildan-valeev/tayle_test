@@ -22,6 +22,7 @@ urlpatterns = [
     path("", main_page, name="main"),
     path('admin/', admin.site.urls),
     path('accounts/', include('apps.account.urls')),
+    path('transactions/', include('apps.balance.urls')),
 ]
 
 

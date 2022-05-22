@@ -19,7 +19,3 @@ class AccountDetail(LoginRequiredMixin, DetailView):
         bills = Bill.objects.filter(user=self.get_object())
         context['bills'] = bills.values()
         return context
-
-
-class AccountTransactionView(LoginRequiredMixin, TemplateView):
-    template_name = 'account/account_transaction.html'
