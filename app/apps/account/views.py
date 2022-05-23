@@ -15,7 +15,6 @@ class AccountDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(AccountDetail, self).get_context_data()
-        print(kwargs)
         bills = Bill.objects.filter(user=self.get_object())
         context['bills'] = bills.values()
         return context

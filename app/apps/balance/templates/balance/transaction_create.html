@@ -23,6 +23,25 @@
 
                     <div class="card">
                         <div class="card-body">
+                            <h5 class="card-title">Баланс</h5>
+                            {% for obj in bills %}
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Cчет №{{ obj.id }}</div>
+                                    <div class="col-lg-9 col-md-8">{{ obj.balance }} р.</div>
+                                </div>
+                            {% endfor %}
+
+                            <h5 class="card-title">Общий баланс</h5>
+
+                            <p>{{ balance }} рублей</p>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-body">
                             <h5 class="card-title">Отправить немного деняг другу))</h5>
 
                             <!-- General Form Elements -->
@@ -116,6 +135,15 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        {% for transaction in account_transactions %}
+                                            <tr>
+                                                <th scope="row">{{ transaction.id }}</th>
+                                                <td>{{ transaction }}</td>
+                                                <td>{{ transaction.to_bill }}</td>
+                                                <td>{{ transaction.amount }}</td>
+                                                <td>{{ transaction.created_at }}</td>
+                                            </tr>
+                                        {% endfor %}
                                         <tr>
                                             <th scope="row">1</th>
                                             <td>Brandon Jacob</td>
