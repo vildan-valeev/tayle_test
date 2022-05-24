@@ -2,6 +2,7 @@ import datetime
 import decimal
 
 from django.db import models, transaction
+from django.urls import reverse
 
 from apps.account.models import Account
 
@@ -22,7 +23,7 @@ class Bill(models.Model):
 
     def __str__(self):
         if self.user:
-            return f"UserID: {self.user.pk} Username: {self.user.username}"
+            return f"ID: {self.pk} {self.user.username} - {self.balance} p."
         return "Internal account"
 
 
@@ -51,8 +52,7 @@ class AccountBillTransaction(models.Model):
     amount = models.DecimalField(max_digits=20, decimal_places=6)
 
     def __str__(self):
-        return f"Transaction: ID {self.id} to --> {self.to_bill.user.username}. " \
-               f"Amount {self.amount}"
+        return f"ID {self.id} to --> {self.to_bill.user.username}"
 
     class Meta:
         verbose_name = "Транзакцию между пользователем"
@@ -61,6 +61,9 @@ class AccountBillTransaction(models.Model):
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         super(AccountBillTransaction, self).save(force_insert=False, force_update=False, using=None,
                                                  update_fields=None)
+
+    def get_absolute_url(self):
+        return reverse('transaction-create')
 
 
 class BillTransaction(models.Model):
@@ -104,7 +107,7 @@ class BillTransaction(models.Model):
                 return self
 
     def __str__(self):
-        return f"Transaction: {self.from_bill} --> {self.to_bill}. Amount {self.amount}"
+        return f"ID {self.id} to --> {self.to_bill.user.username}"
 
     class Meta:
         verbose_name = "Транзакцию между счетами"
