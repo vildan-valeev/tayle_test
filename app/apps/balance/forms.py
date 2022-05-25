@@ -1,5 +1,4 @@
-from django import forms
-from django.forms import ModelForm, TextInput, EmailInput, NumberInput, SelectMultiple, Select, Textarea
+from django.forms import ModelForm, NumberInput, SelectMultiple, Select, Textarea
 
 from .models import AccountBillTransaction, Bill
 

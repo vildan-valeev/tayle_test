@@ -31,6 +31,10 @@ class AccountTransactionCreateView(LoginRequiredMixin, CreateView):
         bills = Bill.objects.filter(user=user)
         context['bills'] = bills.values()  # список счетов
         context['balance'] = bills.aggregate(Sum('balance')).get("balance__sum")  # общая сумма
-        context['account_transactions'] = AccountBillTransaction.objects.filter(from_bills__user=user).order_by('-created_at').distinct()
-        context['bill_transactions'] = BillTransaction.objects.filter(from_bill__user=user).order_by('-created_at')
+        # context['account_transactions'] = AccountBillTransaction.objects.filter(from_bills__user=user).order_by('-created_at').distinct()
+        # context['bill_transactions'] = BillTransaction.objects.filter(from_bill__user=user).order_by('-created_at')
+
+        context['account_transactions'] = AccountBillTransaction.objects.prefetch_related('from_bills__user').order_by(
+            '-created_at')
+        context['bill_transactions'] = BillTransaction.objects.select_related('from_bill__user').order_by('-created_at')
         return context
