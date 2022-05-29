@@ -55,7 +55,7 @@ docker exec -it app poetry run python manage.py loaddata default_data.json
 # Database dump/load
 ```shell
 $ docker exec -it app sh -c "poetry run python manage.py dumpdata --natural-foreign --natural-primary --exclude=contenttypes --exclude=auth.Permission --exclude=admin.logentry --exclude=sessions.session --indent 4 > default_data.json"
-docker exec -it app poetry run python manage.py loaddata default_data.json
+$ docker exec -it app poetry run python manage.py loaddata default_data.json
 ```
 ## Enter to container
 ```sh

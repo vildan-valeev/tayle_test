@@ -11,11 +11,8 @@ class AccountTransactionCreateView(LoginRequiredMixin, CreateView):
     form_class = TransactionForm
     template_name = 'balance/transaction_create.html'
 
-
     def get_object(self):
         return self.request.user
-
-
 
     def get_form_kwargs(self):
         """Прокидываем юзера в форму"""
